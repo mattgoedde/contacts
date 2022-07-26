@@ -1,0 +1,12 @@
+C:\Projects\Test\Contacts\Contacts.Domain\bin\Debug\net6.0\Contacts.Domain.deps.json
+C:\Projects\Test\Contacts\Contacts.Domain\bin\Debug\net6.0\Contacts.Domain.dll
+C:\Projects\Test\Contacts\Contacts.Domain\bin\Debug\net6.0\Contacts.Domain.pdb
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.csproj.AssemblyReference.cache
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.AssemblyInfoInputs.cache
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.AssemblyInfo.cs
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.csproj.CoreCompileInputs.cache
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.dll
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\refint\Contacts.Domain.dll
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\Contacts.Domain.pdb
+C:\Projects\Test\Contacts\Contacts.Domain\obj\Debug\net6.0\ref\Contacts.Domain.dll
