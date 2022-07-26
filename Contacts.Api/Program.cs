@@ -60,7 +60,7 @@ try
         {
             try
             {
-                options.IsInitialized = DbInitializer.Initialize(context);
+                options.IsInitialized = true;
             }
             catch (Exception ex)
             {
