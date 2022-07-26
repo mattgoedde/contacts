@@ -1,9 +1,19 @@
-﻿namespace Contacts.Domain.Models;
+﻿using Contacts.Domain.Base;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public record Person
+namespace Contacts.Domain.Models;
+
+[Table(Constants.Schema.People.TableName, Schema = Constants.Schema.SchemaName)]
+public class Person : BaseEntity
 {
-    public string FirstName { get; set; } = string.Empty;
-    public string? MiddleName { get; set; }
-    public string LastName { get; set; } = string.Empty;
+    [Required]
+    public string FirstName { get; set; }
+    public string MiddleName { get; set; }
+    [Required]
+    public string LastName { get; set; }
+    [Required]
     public DateTime Birthdate { get; set; }
+
+    public Contact Contact { get; set; }
 }

@@ -1,80 +1,97 @@
-using Contacts.Data.Entities;
+using Contacts.Domain.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace Contacts.Data.Repositories;
 
 public class EfCoreRepository<E> : IRepository<E>
-    where E : class, IEntity, new()
+    where E : BaseEntity, new()
 {
-    private readonly ContextOptions _options;
     private readonly ContactsDbContext _context;
 
-    public EfCoreRepository(IOptionsSnapshot<ContextOptions> contextOptions, ContactsDbContext context)
+    public EfCoreRepository(ContactsDbContext context)
     {
-        _options = contextOptions.Get("ContextOptions");
         _context = context;
     }
 
-    public async Task<E> Create(E entity)
+    public async Task<E> Create(E entity, CancellationToken cancellationToken = default)
     {
         _context.Add(entity);
-        await _context.SaveChangesAsync();
+        
+        await _context.SaveChangesAsync(cancellationToken);
         return entity;
     }
 
-    public async Task<bool> Delete(int id)
+    public async Task<bool> Delete(int id, CancellationToken cancellationToken = default)
     {
-        var entity = await Read(id);
+        var entity = await Read(id, cancellationToken);
 
         if (entity is null)
             return false;
 
         _context.Remove<E>(entity);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
 
         return true;
     }
 
-    public async Task<E?> Read(int id)
+    public async Task<E> Read(int id, CancellationToken cancellationToken = default)
     {
         return await _context.Set<E>()
-            .AsNoTracking()
-            .SingleOrDefaultAsync(e => e.Id == id);
+            .SingleOrDefaultAsync(e => e.Id == id, cancellationToken);
     }
 
-    public async Task<IEnumerable<E>> Read()
+    public async Task<IEnumerable<E>> Read(CancellationToken cancellationToken = default)
     {
         return await _context.Set<E>()
-            .AsNoTracking()
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<E>> Read(Func<E, bool> predicate)
+    public async Task<IEnumerable<E>> Read(Func<E, bool> predicate, CancellationToken cancellationToken = default)
     {
         return await _context.Set<E>()
-            .AsNoTracking()
             .Where(predicate)
             .AsQueryable()
-            .ToListAsync();
+            .ToListAsync(cancellationToken);
     }
 
-    public IRepository<E> SetUser(string? user)
+    public async Task<E> ReadWithoutTracking(int id, CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<E>()
+            .AsNoTrackingWithIdentityResolution()
+            .SingleOrDefaultAsync(e => e.Id == id, cancellationToken);
+    }
+
+    public async Task<IEnumerable<E>> ReadWithoutTracking(CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<E>()
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<IEnumerable<E>> ReadWithoutTracking(Func<E, bool> predicate, CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<E>()
+            .AsNoTrackingWithIdentityResolution()
+            .Where(predicate)
+            .AsQueryable()
+            .ToListAsync(cancellationToken);
+    }
+
+    public IRepository<E> SetUser(string user, CancellationToken cancellationToken = default)
     {
         _context.SetUser(user);
         return this;
     }
 
-    public async Task<E?> Update(int id, E entity)
+    public async Task<E> Update(int id, E entity, CancellationToken cancellationToken = default)
     {
-        var entityToUpdate = await Read(id);
+        var entityToUpdate = await Read(id, cancellationToken);
         if (entityToUpdate is null)
             return null;
 
-        entityToUpdate.Update(entity);
         _context.Set<E>().Update(entityToUpdate);
 
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
 
         return entityToUpdate;
     }

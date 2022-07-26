@@ -1,5 +1,5 @@
-using Contacts.Data.Entities;
 using Contacts.Data.Repositories;
+using Contacts.Domain.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +7,7 @@ namespace Contacts.Api.BaseWeb;
 
 [Authorize]
 public abstract class EntityController<E> : ControllerBase, ICrudController<E>
-    where E : class, IEntity, new()
+    where E : BaseEntity, new()
 {
     private readonly ILogger _logger;
     private readonly IRepository<E> _repository;

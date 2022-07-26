@@ -1,18 +1,15 @@
 using Contacts.Api.BaseWeb;
-using Contacts.Data;
-using Contacts.Data.Entities;
 using Contacts.Data.Repositories;
 using Contacts.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 
 namespace Contacts.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AddressesController : EntityController<AddressEntity>
+public class AddressesController : EntityController<Address>
 {
-    public AddressesController(ILogger<EntityController<AddressEntity>> logger, IRepository<AddressEntity> repository)
+    public AddressesController(ILogger<EntityController<Address>> logger, IRepository<Address> repository)
     : base(logger, repository)
     {
     }

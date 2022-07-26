@@ -1,11 +1,26 @@
+using Contacts.Domain.Base;
+using Contacts.Domain.Configurations;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Contacts.Domain.Models;
 
-public record Address
+[Table(Constants.Schema.Addresses.TableName, Schema = Constants.Schema.SchemaName)]
+[EntityTypeConfiguration(typeof(AddressConfiguration))]
+public class Address : BaseEntity
 {
-    public string StreetNumber { get; set; } = string.Empty;
-    public string? StreetNumber2 { get; set; }
-    public string City { get; set; } = string.Empty;
-    public string State { get; set; } = string.Empty;
-    public string Country { get; set; } = string.Empty;
-    public string ZipCode { get; set; } = string.Empty;
+    [Required]
+    public string StreetNumber { get; set; }
+    public string StreetNumber2 { get; set; }
+    [Required]
+    public string City { get; set; }
+    [Required]
+    public string State { get; set; }
+    [Required]
+    public string Country { get; set; }
+    [Required]
+    public string ZipCode { get; set; }
+
+    public Contact Contact { get; set; }
 }

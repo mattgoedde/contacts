@@ -1,15 +1,12 @@
-using Contacts.Data.Entities;
+using Contacts.Domain.Base;
 
 namespace Contacts.Data.Repositories;
 
-public interface IRepository<E>
-    where E : class, IEntity, new()
+public interface IRepository<E> : IReadRepository<E>
+    where E : BaseEntity, new()
 {
-    public IRepository<E> SetUser(string? user);
-    public Task<E> Create(E entity);
-    public Task<E?> Read(int id);
-    public Task<IEnumerable<E>> Read();
-    public Task<IEnumerable<E>> Read(Func<E, bool> predicate);
-    public Task<E?> Update(int id, E entity);
-    public Task<bool> Delete(int id);
+    public IRepository<E> SetUser(string user, CancellationToken cancellationToken = default);
+    public Task<E> Create(E entity, CancellationToken cancellationToken = default);
+    public Task<E> Update(int id, E entity, CancellationToken cancellationToken = default);
+    public Task<bool> Delete(int id, CancellationToken cancellationToken = default);
 }
