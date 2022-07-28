@@ -7,7 +7,7 @@ namespace Contacts.Api.BaseWeb;
 
 [Authorize]
 public abstract class EntityController<E> : ControllerBase, ICrudController<E>
-    where E : BaseEntity, new()
+    where E : EntityBase, new()
 {
     private readonly ILogger _logger;
     private readonly IRepository<E> _repository;

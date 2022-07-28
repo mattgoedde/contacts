@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Contacts.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -29,15 +30,15 @@ public static class AuditLogFactory
         {
             case EntityState.Added:
                 log.OldRecord = null;
-                log.NewRecord = newRecord;
+                log.NewRecord = JsonSerializer.Serialize(newRecord);
                 break;
             case EntityState.Deleted:
-                log.OldRecord = oldRecord;
+                log.OldRecord = JsonSerializer.Serialize(oldRecord);
                 log.NewRecord = null;
                 break;
             case EntityState.Modified:
-                log.OldRecord = oldRecord;
-                log.NewRecord = newRecord;
+                log.OldRecord = JsonSerializer.Serialize(oldRecord);
+                log.NewRecord = JsonSerializer.Serialize(newRecord);
                 break;
             default:
                 break;

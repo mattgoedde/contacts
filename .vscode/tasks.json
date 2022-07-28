@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Contacts.Api/Contacts.Api.csproj",
+                "${workspaceFolder}/Contacts.FastApi/Contacts.FastApi.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Contacts.Api/Contacts.Api.csproj",
+                "${workspaceFolder}/Contacts.FastApi/Contacts.FastApi.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/Contacts.Api/Contacts.Api.csproj"
+                "${workspaceFolder}/Contacts.FastApi/Contacts.FastApi.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

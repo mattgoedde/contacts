@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Contacts.Data.Database.Configurations
 {
-    public class PhoneNumberConfiguration : BaseEntityConfiguration<PhoneNumber>
+    public class PhoneNumberConfiguration : EntityBaseConfiguration<PhoneNumber>
     {
         public override void Configure(EntityTypeBuilder<PhoneNumber> builder)
         {

@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Contacts.Api/bin/Debug/net6.0/Contacts.Api.dll",
+            "program": "${workspaceFolder}/Contacts.FastApi/bin/Debug/net6.0/Contacts.FastApi.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Contacts.Api",
             "stopAtEntry": false,

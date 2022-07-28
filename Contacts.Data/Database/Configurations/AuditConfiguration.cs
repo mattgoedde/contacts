@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Contacts.Data.Database.Configurations
 {
-    public class AuditConfiguration : BaseEntityConfiguration<Audit>
+    public class AuditConfiguration : EntityBaseConfiguration<Audit>
     {
         public override void Configure(EntityTypeBuilder<Audit> builder)
         {

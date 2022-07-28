@@ -7,7 +7,7 @@ namespace Contacts.Domain.Models;
 
 [Table(Constants.Schema.Contacts.TableName, Schema = Constants.Schema.SchemaName)]
 [Index(nameof(PersonId), Name = Constants.Schema.Contacts.ContactsPersonIdIndex)]
-public class Contact : BaseEntity
+public class Contact : EntityBase
 {
     [EmailAddress]
     [Required]

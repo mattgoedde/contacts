@@ -1,3 +1,4 @@
+using Contacts.Data.Database.Configurations;
 using Contacts.Domain.Base;
 using Contacts.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,15 @@ public class ContactsDbContext : DbContext
     public DbSet<Person> People { get; set; } = default!;
     public DbSet<Address> Addresses { get; set; } = default!;
     public DbSet<PhoneNumber> PhoneNumbers { get; set; } = default!;
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.ApplyConfiguration(new AuditConfiguration());
+        builder.ApplyConfiguration(new ContactConfiguration());
+        builder.ApplyConfiguration(new PersonConfiguration());
+        builder.ApplyConfiguration(new AddressConfiguration());
+        builder.ApplyConfiguration(new PhoneNumberConfiguration());
+    }
 
     public override int SaveChanges()
     {
@@ -59,7 +69,7 @@ public class ContactsDbContext : DbContext
     {
         foreach (var entry in ChangeTracker.Entries())
         {
-            if (entry.Entity is BaseEntity entity)
+            if (entry.Entity is EntityBase entity)
             {
                 switch (entry.State)
                 {

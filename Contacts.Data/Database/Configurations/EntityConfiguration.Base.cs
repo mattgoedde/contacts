@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Contacts.Data.Database.Configurations
 {
-    public class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T>
-        where T : BaseEntity, new()
+    public class EntityBaseConfiguration<T> : IEntityTypeConfiguration<T>
+        where T : EntityBase, new()
     {
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {

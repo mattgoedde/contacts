@@ -3,7 +3,7 @@ using Contacts.Domain.Base;
 namespace Contacts.Data.Repositories;
 
 public interface IRepository<E> : IReadRepository<E>
-    where E : BaseEntity, new()
+    where E : EntityBase, new()
 {
     public IRepository<E> SetUser(string user, CancellationToken cancellationToken = default);
     public Task<E> Create(E entity, CancellationToken cancellationToken = default);

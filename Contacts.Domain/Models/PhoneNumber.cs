@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Contacts.Domain.Models;
 
 [Table(Constants.Schema.PhoneNumbers.TableName, Schema = Constants.Schema.SchemaName)]
-public class PhoneNumber : BaseEntity
+public class PhoneNumber : EntityBase
 {
     [Phone]
     [Required]

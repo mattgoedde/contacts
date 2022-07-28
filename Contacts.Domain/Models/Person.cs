@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Contacts.Domain.Models;
 
 [Table(Constants.Schema.People.TableName, Schema = Constants.Schema.SchemaName)]
-public class Person : BaseEntity
+public class Person : EntityBase
 {
     [Required]
     public string FirstName { get; set; }

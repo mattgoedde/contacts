@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Contacts.Domain.Models;
 
 [Table(Constants.Schema.Addresses.TableName, Schema = Constants.Schema.SchemaName)]
-public class Address : BaseEntity
+public class Address : EntityBase
 {
     [Required]
     public string StreetNumber { get; set; }

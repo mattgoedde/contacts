@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Contacts.Data.Repositories;
 
 public class EfCoreRepository<E> : IRepository<E>
-    where E : BaseEntity, new()
+    where E : EntityBase, new()
 {
     private readonly ContactsDbContext _context;
 
@@ -65,6 +65,13 @@ public class EfCoreRepository<E> : IRepository<E>
     public async Task<IEnumerable<E>> ReadWithoutTracking(CancellationToken cancellationToken = default)
     {
         return await _context.Set<E>()
+            .ToListAsync(cancellationToken);
+    }
+
+    public async Task<IEnumerable<E>> ReadWithoutTracking(int[] ids, CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<E>()
+            .Where(e => ids.Contains(e.Id))
             .ToListAsync(cancellationToken);
     }
 
