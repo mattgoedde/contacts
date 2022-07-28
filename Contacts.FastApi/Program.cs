@@ -7,6 +7,7 @@ using Serilog;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using Microsoft.AspNetCore.Http.Json;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -18,6 +19,11 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     builder.Host.UseSerilog();
+
+    builder.Services.Configure<JsonOptions>(options =>
+        {
+            options.SerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+        });
 
     // Register services here
     builder.Services.AddFastEndpoints();

@@ -4,26 +4,26 @@ using Contacts.FastApi.Contracts.Requests;
 using Contacts.FastApi.Contracts.Responses;
 using FastEndpoints;
 
-namespace Contacts.FastApi.Endpoints.Base;
+namespace Contacts.FastApi.Endpoints.Base.Get;
 
-public abstract class GetEntitiesEndpointBase<T> : Endpoint<GetEntitiesRequest<T>, EntitiesResponse<T>>
+public abstract class GetEntityEndpointBase<T> : Endpoint<GetEntityRequest<T>, EntityResponse<T>>
     where T : notnull, EntityBase, new()
 {
 
     private readonly IReadRepository<T> _repo;
-    public GetEntitiesEndpointBase(IReadRepository<T> repo)
+    public GetEntityEndpointBase(IReadRepository<T> repo)
     {
         _repo = repo;
     }
 
-    public override async Task HandleAsync(GetEntitiesRequest<T> req, CancellationToken ct)
+    public override async Task HandleAsync(GetEntityRequest<T> req, CancellationToken ct)
     {
-        IEnumerable<T> entities = await _repo.ReadWithoutTracking(ct);
-        if (entities is not null && entities.Any())
+        T entity = await _repo.ReadWithoutTracking(req.Id, ct);
+        if (entity is not null)
         {
-            EntitiesResponse<T> res = new()
+            EntityResponse<T> res = new()
             {
-                Entities = entities,
+                Entity = entity,
                 Success = true
             };
             await SendOkAsync(res, ct);
