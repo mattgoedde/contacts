@@ -2,8 +2,8 @@ using Contacts.Domain.Base;
 
 namespace Contacts.FastApi.Contracts.Requests;
 
-public class GetEntityRequest<T> : Request
+public class EntityRequest<T> : Request
     where T : notnull, EntityBase, new()
 {
-    public int Id { get; init; } = default!;
+    public T Entity { get; init; } = default!;
 }

@@ -7,7 +7,7 @@ using FastEndpoints;
 
 namespace Contacts.FastApi.Endpoints.Base.Get;
 
-public abstract class PostEntityEndpointBase<T> : Endpoint<PostEntityRequest<T>, EntityResponse<T>>
+public abstract class PostEntityEndpointBase<T> : Endpoint<EntityRequest<T>, EntityResponse<T>>
     where T : notnull, EntityBase, new()
 {
 
@@ -17,7 +17,7 @@ public abstract class PostEntityEndpointBase<T> : Endpoint<PostEntityRequest<T>,
         _repo = repo;
     }
 
-    public override async Task HandleAsync(PostEntityRequest<T> req, CancellationToken ct)
+    public override async Task HandleAsync(EntityRequest<T> req, CancellationToken ct)
     {
         try
         {

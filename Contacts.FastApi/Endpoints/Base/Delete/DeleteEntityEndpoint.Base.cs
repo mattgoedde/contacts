@@ -7,7 +7,7 @@ using FastEndpoints;
 
 namespace Contacts.FastApi.Endpoints.Base.Get;
 
-public abstract class DeleteEntityEndpointBase<T> : Endpoint<DeleteEntityRequest<T>, Response>
+public abstract class DeleteEntityEndpointBase<T> : Endpoint<EntityRequest<T>, Response>
     where T : notnull, EntityBase, new()
 {
 
@@ -17,7 +17,7 @@ public abstract class DeleteEntityEndpointBase<T> : Endpoint<DeleteEntityRequest
         _repo = repo;
     }
 
-    public override async Task HandleAsync(DeleteEntityRequest<T> req, CancellationToken ct)
+    public override async Task HandleAsync(EntityRequest<T> req, CancellationToken ct)
     {
         try
         {

@@ -6,7 +6,7 @@ using FastEndpoints;
 
 namespace Contacts.FastApi.Endpoints.Base.Get;
 
-public abstract class GetEntitiesEndpointBase<T> : Endpoint<GetEntitiesRequest<T>, EntitiesResponse<T>>
+public abstract class GetEntitiesEndpointBase<T> : Endpoint<EntitiesIdRequest<T>, EntitiesResponse<T>>
     where T : notnull, EntityBase, new()
 {
 
@@ -16,7 +16,7 @@ public abstract class GetEntitiesEndpointBase<T> : Endpoint<GetEntitiesRequest<T
         _repo = repo;
     }
 
-    public override async Task HandleAsync(GetEntitiesRequest<T> req, CancellationToken ct)
+    public override async Task HandleAsync(EntitiesIdRequest<T> req, CancellationToken ct)
     {
         IEnumerable<T> entities = await _repo.ReadWithoutTracking(req.Ids, ct);
         if (entities is not null && entities.Any())
