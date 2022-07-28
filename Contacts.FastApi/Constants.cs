@@ -27,9 +27,9 @@ public static partial class Constants
 
         public static class PhoneNumbers
         {
-            public const string CertainPhoneNumbers = "addresses";
-            public const string AllPhoneNumbers = "addresses/all";
-            public const string PhoneNumberById = "addresses/{id:int}";
+            public const string CertainPhoneNumbers = "phonenumbers";
+            public const string AllPhoneNumbers = "phonenumbers/all";
+            public const string PhoneNumberById = "phonenumbers/{id:int}";
         }
 
         public static class Contacts
