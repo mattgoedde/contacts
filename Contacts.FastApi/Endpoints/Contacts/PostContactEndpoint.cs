@@ -1,5 +1,6 @@
 using Contacts.Data.Repositories;
 using Contacts.Domain.Models;
+using Contacts.FastApi.Contracts.Requests;
 using Contacts.FastApi.Endpoints.Base.Get;
 using FastEndpoints;
 

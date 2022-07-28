@@ -76,12 +76,15 @@ try
     app.UseAuthorization();
 
     // Configure app here
-    app.UseFastEndpoints(x =>
-    {
-    });
+    app.UseFastEndpoints(x => { });
 
     app.UseOpenApi();
     app.UseSwaggerUi3(s => s.ConfigureDefaults());
+
+    if (!app.Environment.IsProduction())
+    {
+        app.MapGet("", () => Results.Redirect("/swagger"));
+    }
 
     app.Run();
 }

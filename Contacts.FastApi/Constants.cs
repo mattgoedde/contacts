@@ -8,12 +8,28 @@ public static partial class Constants
         {
             public const string People = "people";
             public const string Contact = "contacts";
+            public const string Address = "addresses";
+            public const string PhoneNumber = "phonenumbers";
         }
         public static class People
         {
             public const string CertainPeople = "people";
             public const string AllPeople = "people/all";
             public const string PersonById = "people/{id:int}";
+        }
+
+        public static class Addresses
+        {
+            public const string CertainAddresses = "addresses";
+            public const string AllAddresses = "addresses/all";
+            public const string AddressById = "addresses/{id:int}";
+        }
+
+        public static class PhoneNumbers
+        {
+            public const string CertainPhoneNumbers = "addresses";
+            public const string AllPhoneNumbers = "addresses/all";
+            public const string PhoneNumberById = "addresses/{id:int}";
         }
 
         public static class Contacts
