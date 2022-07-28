@@ -1,5 +1,4 @@
 using Contacts.Domain.Base;
-using Contacts.Domain.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +7,6 @@ namespace Contacts.Domain.Models;
 
 [Table(Constants.Schema.Contacts.TableName, Schema = Constants.Schema.SchemaName)]
 [Index(nameof(PersonId), Name = Constants.Schema.Contacts.ContactsPersonIdIndex)]
-[EntityTypeConfiguration(typeof(ContactConfiguration))]
 public class Contact : BaseEntity
 {
     [EmailAddress]

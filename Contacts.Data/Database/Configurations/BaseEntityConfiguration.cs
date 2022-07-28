@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Contacts.Domain.Configurations
+namespace Contacts.Data.Database.Configurations
 {
     public class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T>
         where T : BaseEntity, new()

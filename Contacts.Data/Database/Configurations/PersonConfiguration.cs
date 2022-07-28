@@ -1,8 +1,7 @@
 ﻿using Contacts.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Contacts.Domain.Configurations
+namespace Contacts.Data.Database.Configurations
 {
     public class PersonConfiguration : BaseEntityConfiguration<Person>
     {

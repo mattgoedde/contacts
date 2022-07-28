@@ -1,12 +1,9 @@
 using Contacts.Domain.Base;
-using Contacts.Domain.Configurations;
-using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Contacts.Domain.Models;
 
 [Table(Constants.Schema.AuditLogs.TableName, Schema = Constants.Schema.SchemaName)]
-[EntityTypeConfiguration(typeof(AuditConfiguration))]
 public class Audit : BaseEntity
 {
     public DateTime EventTime { get; set; }

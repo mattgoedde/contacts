@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Contacts.Domain.Configurations
+namespace Contacts.Data.Database.Configurations
 {
     public class ContactConfiguration : IEntityTypeConfiguration<Contact>
     {
@@ -20,6 +20,9 @@ namespace Contacts.Domain.Configurations
             builder.HasMany(c => c.PhoneNumbers)
                 .WithOne(p => p.Contact)
                 .OnDelete(DeleteBehavior.ClientCascade);
+
+            // Unique Email Index where is not deleted
+            builder.HasIndex(c => c.Email).HasFilter("IsDeleted = 0").IsUnique();
         }
     }
 }

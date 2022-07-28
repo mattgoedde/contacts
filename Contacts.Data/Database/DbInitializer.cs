@@ -1,6 +1,6 @@
-namespace Contacts.Data;
+namespace Contacts.Data.Database;
 
 public static class DbInitializer
 {
-    
+
 }

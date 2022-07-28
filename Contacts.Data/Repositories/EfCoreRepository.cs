@@ -1,6 +1,6 @@
+using Contacts.Data.Database;
 using Contacts.Domain.Base;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace Contacts.Data.Repositories;
 
@@ -17,7 +17,7 @@ public class EfCoreRepository<E> : IRepository<E>
     public async Task<E> Create(E entity, CancellationToken cancellationToken = default)
     {
         _context.Add(entity);
-        
+
         await _context.SaveChangesAsync(cancellationToken);
         return entity;
     }

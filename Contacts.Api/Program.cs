@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Negotiate;
-using Contacts.Data;
-using Contacts.Data.Repositories;
+
 using Serilog;
+
+using Contacts.Data.Repositories;
+using Contacts.Data.Database;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
